@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "301540994725",
+    "firebase_url": "https://squad-security-99d85.firebaseio.com",
+    "project_id": "squad-security-99d85",
+    "storage_bucket": "squad-security-99d85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301540994725:android:09664503bd194b13b2a74c",
+        "android_client_info": {
+          "package_name": "com.dip.squad_security"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301540994725-iat01lds63ffd57lhk2rgn2sm07a6gsc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoiQWphl2PqFKwjxpJ_gXG3v7M6w4w5mE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301540994725-iat01lds63ffd57lhk2rgn2sm07a6gsc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
