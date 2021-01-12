@@ -1,7 +1,6 @@
 package com.dip.squadsecurity;
 
 import android.Manifest;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -208,7 +207,7 @@ private StorageReference storageReference;
         }
         else {
             Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(camera, PICK_IMAGE_CAMERA);
+                //startActivityForResult(camera, PICK_IMAGE_CAMERA);
             if (camera.resolveActivity(getPackageManager()) != null) {
                 try {
                     destination = createImageFile();
@@ -219,7 +218,7 @@ private StorageReference storageReference;
                     Uri photoUri = FileProvider.getUriForFile(UserProfile.this,
                             "com.dip.squadsecurity", destination);
                     camera.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                    //startActivityForResult(camera,PICK_IMAGE_CAMERA);
+                    startActivityForResult(camera,PICK_IMAGE_CAMERA);
                 }
             }
         }
@@ -249,7 +248,7 @@ private StorageReference storageReference;
             try {
 
                 imgPath = Uri.fromFile(new File(currentPhotoPath));
-                performCrop();
+                //performCrop();
                 //compress image
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imgPath);
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -354,43 +353,10 @@ private StorageReference storageReference;
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        //uiid= UUID.randomUUID().toString();
-                        //Clear();
                     }
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
-    /**
-     * this function does the crop operation.
-     */
-    private void performCrop() {
-        // take care of exceptions
-        try {
-            // call the standard crop action intent (the user device may not
-            // support it)
-            Intent camera = new Intent("com.android.camera.action.CROP");
-            // indicate image type and Uri
-            camera.setDataAndType(imgPath, "image/*");
-            // set crop properties
-            camera.putExtra("crop", "true");
-            // indicate aspect of desired crop
-            camera.putExtra("aspectX", 2);
-            camera.putExtra("aspectY", 1);
-            // indicate output X and Y
-            camera.putExtra("outputX", 256);
-            camera.putExtra("outputY", 256);
-            // retrieve data on return
-            camera.putExtra("return-data", true);
-            // start the activity - we handle returning in onActivityResult
-            startActivityForResult(camera,PICK_IMAGE_CAMERA);
-        }
-        // respond to users whose devices do not support the crop action
-        catch (ActivityNotFoundException anfe) {
-            Toast toast = Toast
-                    .makeText(this, "This device doesn't support the crop action!", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-    }
 }
